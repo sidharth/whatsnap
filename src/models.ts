@@ -1,6 +1,3 @@
-
-
-
 // Models mapped to Whatsapp's Database.
 
 export interface ZChatSession {
@@ -14,6 +11,8 @@ export interface ZChatMessage {
     ZFROMJID: string,
     ZTOJID: string,
     ZMESSAGETYPE: number,
-    ZTEXT: string
+    ZMESSAGEDATE: number,
+    ZTEXT: string,
+    ZISFROMME: number
 }
 

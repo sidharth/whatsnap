@@ -23,4 +23,12 @@ export function savePage(pageName: string, contents: string) {
     fs.writeFileSync(filePath, contents)
 }
 
+export function saveStyles() {
+    if (!fs.existsSync(GEN_DIR)) {
+        fs.mkdirSync(GEN_DIR)
+    }
+
+    fs.copyFileSync('raw/styles.css', GEN_DIR + 'styles.css')
+}
+
 export default {}

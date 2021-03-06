@@ -18,7 +18,8 @@ export function getMessagesForSessionQuery(sessionId: number) {
             ZFROMJID,
             ZTOJID,
             ZMESSAGETYPE,
-            ZTEXT
+            ZTEXT,
+            ZISFROMME
         FROM 
             ZWAMESSAGE
         WHERE 

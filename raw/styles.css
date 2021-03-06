@@ -1,0 +1,26 @@
+.message {
+    width:60%;
+    color: white;
+    margin: 0.5em 1em;
+    padding: 1em;
+    border-radius: 4px;
+    font-family: 'Helvetica', sans-serif;
+}
+
+.self {
+    background-color: rgb(44,95,97);
+    align-self: flex-end;
+}
+
+.other {
+    background-color: rgb(40,45,49);
+}
+
+.container {
+    width: 100%; 
+    max-width: 1000px;
+    background-color: rgb(20,25,29);
+    display: flex;
+    flex-direction: column;
+    margin:0 auto
+}

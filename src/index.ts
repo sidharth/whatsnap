@@ -1,6 +1,6 @@
 import sqlite3, { Database } from 'sqlite3'
 import { getChatSessionsQuery, getIOSChatDbQuery, query, getMessagesForSessionQuery } from './utils/query-utils'
-import {copyToTemp} from './utils/file-utils'
+import {copyToTemp, saveStyles} from './utils/file-utils'
 import {cliArgs} from './utils/cli-utils'
 import { ZChatMessage, ZChatSession } from './models'
 import {generateSessionPage} from './generator'
@@ -9,6 +9,7 @@ const PLATFORM = cliArgs.platform as string // currently only supports iOS backu
 const BACKUP_PATH = cliArgs.path as string
 const sqlite = sqlite3.verbose()
 
+// Program Driver.
 async function main() {
     let {chatDbPath} = await getWhatsappChatDb(BACKUP_PATH)
     let chatDb = new sqlite.Database(chatDbPath, sqlite3.OPEN_READONLY)
@@ -23,6 +24,8 @@ async function main() {
             generateSessionPage(chatSession, sessionMessages)
         }
     }
+
+    saveStyles()
 }
 
 async function getWhatsappChatDb(iosBackupDirPath: string): Promise<{chatDbPath: string}> {
