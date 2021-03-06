@@ -8,10 +8,6 @@ export function getChatSessionsQuery() {
             ZCONTACTJID 
         FROM 
             ZWACHATSESSION 
-        ORDER BY 
-            ZLASTMESSAGEDATE 
-        DESC 
-        LIMIT 100
     `
 }
 
@@ -28,7 +24,7 @@ export function getMessagesForSessionQuery(sessionId: number) {
         WHERE 
             1=1
             AND ZCHATSESSION = ${sessionId}
-        ORDER BY ZMESSAGEDATE DESC
+        ORDER BY ZMESSAGEDATE
     `
 }
 

@@ -2,6 +2,8 @@ import sqlite3, { Database } from 'sqlite3'
 import { getChatSessionsQuery, getIOSChatDbQuery, query, getMessagesForSessionQuery } from './utils/query-utils'
 import {copyToTemp} from './utils/file-utils'
 import {cliArgs} from './utils/cli-utils'
+import { ZChatMessage, ZChatSession } from './models'
+import {generateSessionPage} from './generator'
 
 const PLATFORM = cliArgs.platform as string // currently only supports iOS backups.
 const BACKUP_PATH = cliArgs.path as string
@@ -17,6 +19,9 @@ async function main() {
         let {Z_PK: sessionId, ZCONTACTJID: contactId, ZPARTNERNAME: contactName } = chatSession
         let sessionMessages = await query(chatDb, getMessagesForSessionQuery(sessionId)) as ZChatMessage[]
         chatHistory.set(contactId, sessionMessages)
+        if (sessionMessages.length > 0) {
+            generateSessionPage(chatSession, sessionMessages)
+        }
     }
 }
 
