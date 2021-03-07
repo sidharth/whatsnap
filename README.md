@@ -1,6 +1,6 @@
 # Whatsnap 
 
-A small util to get a complete, browsable HTML backup of all your Whatsapp chats. Written in Typescript.
+A util to get a complete, browsable HTML backup of all your Whatsapp chats. Written in Typescript.
 
 ## Motivation 
 
